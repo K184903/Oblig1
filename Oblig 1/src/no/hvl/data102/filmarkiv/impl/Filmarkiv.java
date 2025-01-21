@@ -32,7 +32,12 @@ public class Filmarkiv implements FilmarkivADT {
 
 	@Override
 	public boolean slettFilm(int filmnr) {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < filmer.length; i++) {
+			if (filmer[i].getFilmnr() == filmnr) {
+				filmer[i] = new Film();
+				return true;
+			}
+		}
 		return false;
 	}
 
