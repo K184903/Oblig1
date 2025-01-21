@@ -73,8 +73,7 @@ public class Filmarkiv implements FilmarkivADT {
 
 	@Override
 	public int antall() {
-		// TODO Auto-generated method stub
-		return 0;
+		return nesteLedig - 1;
 	}
 
 }
