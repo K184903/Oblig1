@@ -4,22 +4,29 @@ import no.hvl.data102.filmarkiv.adt.FilmarkivADT;
 
 public class Filmarkiv implements FilmarkivADT {
 	private Film[] filmer; 
-        
+    private int nesteLedig;
 
     public Filmarkiv(int antall) {
         this.filmer = new Film[antall];
-       
+        this.nesteLedig = 0;
     }
 
 	@Override
 	public Film finnFilm(int nr) {
-		// TODO Auto-generated method stub
+	  for(int i = 0; i<filmer.length;i++) {
+		  if(filmer[i].getFilmnr()==nr) {
+			  return filmer[i];
+		  }
+	  }
 		return null;
 	}
 
 	@Override
 	public void leggTilFilm(Film nyFilm) {
-		// TODO Auto-generated method stub
+		if(filmer.length<nesteLedig) {
+			nesteLedig++;
+		}
+		
 		
 	}
 
