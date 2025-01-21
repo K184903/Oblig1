@@ -3,12 +3,12 @@ package no.hvl.data102.filmarkiv.impl;
 import no.hvl.data102.filmarkiv.adt.FilmarkivADT;
 
 public class Filmarkiv implements FilmarkivADT {
-	private Film[] filmer;  // Tabell for å lagre filmene
-    private int antall;     // Antall filmer i arkivet
+	private Film[] filmer; 
+        
 
-    public Filmarkiv(int kapasitet) {
-        this.filmer = new Film[kapasitet];
-        this.antall = 0;
+    public Filmarkiv(int antall) {
+        this.filmer = new Film[antall];
+       
     }
 
 	@Override
