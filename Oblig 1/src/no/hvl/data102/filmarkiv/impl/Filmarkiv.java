@@ -61,8 +61,15 @@ public class Filmarkiv implements FilmarkivADT {
 
 	@Override
 	public Film[] soekProdusent(String delstreng) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		ArrayList<Film> resultater = new ArrayList<>();
+		for (int i = 0; i < nesteLedig; i++) {
+			if (filmer[i].getProdusent().toLowerCase().contains(delstreng.toLowerCase())) {
+				resultater.add(filmer[i]);
+			}
+		}
+
+		return resultater.toArray(new Film[0]);
 	}
 
 	@Override
