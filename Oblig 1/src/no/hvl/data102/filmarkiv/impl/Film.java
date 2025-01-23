@@ -14,6 +14,7 @@ public class Film {
 	        ACTION, DRAMA, KOMEDIE, SKREKK, SCI_FI, ANIMASJON, DOKUMENTAR
 	    }
 	 
+	 
 	 //tom konstruktør
 	 public Film() {
 	        this.filmnr = 0;
