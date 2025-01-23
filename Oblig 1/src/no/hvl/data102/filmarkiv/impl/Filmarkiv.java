@@ -69,7 +69,7 @@ public class Filmarkiv implements FilmarkivADT {
 	public int antall(Sjanger sjanger) {
 		 int antall = 0;
 		 for (int i = 0; i < nesteLedig; i++) {
-			 if (filmer[i].getSjanger() == sjanger) {
+			 if (filmer[i].getSjanger().toString().equals(sjanger.toString())) {
 				 antall += 1;
 			 }
 		 }
