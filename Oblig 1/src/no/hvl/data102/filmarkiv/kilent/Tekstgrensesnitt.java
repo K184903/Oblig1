@@ -45,12 +45,11 @@ public class Tekstgrensesnitt extends Film {
 		System.out.println("Sjanger: " + getSjanger().toString());
 		System.out.println("Filmselskap: " + getFilmselskap());
 	}
+	
 	// Skriver ut alle filmer med en spesiell delstreng i tittelen
 	public void skrivUtFilmDelstrengITittel(FilmarkivADT arkiv, String delstreng) {
 		//TODO
-			
 	}
-	
 	// Skriver ut alle Filmer av en produsent (produsent er delstreng)
 	public void skrivUtFilmProdusent(FilmarkivADT arkiv, String delstreng) {
 	// TODO
