@@ -37,13 +37,17 @@ public class Tekstgrensesnitt extends Film {
 	}
 
 	// Skriver ut en film med alle opplysninger på skjerm (husk tekst for sjanger)
-	public void skrivUtFilm(Film film) {
-		System.out.println("Filmnummer: " + getFilmnr());
-		System.out.println("Produsent: " + getProdusent());
-		System.out.println("Film: " + getFilm());
-		System.out.println("År: " + getAar());
-		System.out.println("Sjanger: " + getSjanger().toString());
-		System.out.println("Filmselskap: " + getFilmselskap());
+	public static void skrivUtFilm(Film film) {
+		System.out.println("Filmnummer: " + film.getFilmnr());
+		System.out.println("Produsent: " + film.getProdusent());
+		System.out.println("Film: " + film.getFilm());
+		System.out.println("År: " + film.getAar());
+		if (film.getSjanger() != null) {
+			System.out.println("Sjanger: " + film.getSjanger().toString());
+		} else {
+			System.out.println("Sjanger: Ikke satt");
+		}
+		System.out.println("Filmselskap: " + film.getFilmselskap());
 	}
 	
 	// Skriver ut alle filmer med en spesiell delstreng i tittelen

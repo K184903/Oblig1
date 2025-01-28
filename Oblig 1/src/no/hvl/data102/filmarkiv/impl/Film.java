@@ -25,7 +25,7 @@ public class Film {
 	        this.filmselskap = "";
 	    }
 
-	public Film(int filmnr, String produsent, String film, int aar,Sjanger sjanger, String filmselskap) {
+	public Film(int filmnr, String produsent, String film, int aar, Sjanger sjanger, String filmselskap) {
 		super();
 		this.filmnr = filmnr;
 		this.produsent = produsent;
