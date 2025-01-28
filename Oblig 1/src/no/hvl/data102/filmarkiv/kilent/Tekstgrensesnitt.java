@@ -1,39 +1,45 @@
 package no.hvl.data102.filmarkiv.kilent;
+import no.hvl.data102.filmarkiv.impl.*;
 
 
 import java.util.Scanner;
 import no.hvl.data102.filmarkiv.adt.FilmarkivADT;
 import no.hvl.data102.filmarkiv.impl.Film;
 import no.hvl.data102.filmarkiv.impl.Filmarkiv;
-
+import no.hvl.data102.filmarkiv.impl.Sjanger;
 
 public class Tekstgrensesnitt extends Film {
 
-	
-	// Leser inn opplysninger om en film fra tastatur og returnere et Film-objekt
-	public Film lesFilm(){
-	  Scanner scanner = new Scanner (System.in);
-	    System.out.println("Filmnummer");
-	    int nr = scanner.nextInt();
-	  
-	   System.out.println("Film: ");
-	   String  film = scanner.nextLine();
-	   
-	   System.out.println("Navn på produsent: ");
-	   String prod = scanner.nextLine();
-	   
-	   System.out.println("År for lansering :");
-	   int aar = scanner.nextInt();
-	   
-	   System.out.println("Sjanger :");
-	   String sjanger = scanner.nextLine();
-	   
-	   System.out.println("Navn på Filmselskap :");
-	   String filmselskap = scanner.nextLine();
-	   
-	   
-	   Film f = new Film(nr, prod, film, aar, sjanger, filmselskap);
-	   return f;
+	private Scanner scanner = new Scanner(System.in);
+
+	public Film lesFilm() {
+
+		System.out.println("Filmnummer");
+		int nr = scanner.nextInt();
+		scanner.nextLine();
+		
+		System.out.println("Navn på produsent: ");
+		String produsent = scanner.nextLine();
+
+		System.out.println("Filmtittel: ");
+		String film = scanner.nextLine();
+
+
+		System.out.println("År for lansering :");
+		int aar = scanner.nextInt();
+		scanner.nextLine();
+
+		System.out.println("Sjanger :");
+		String navn = scanner.nextLine();
+		Sjanger sjanger = Sjanger.finnSjanger(navn.toUpperCase());
+		
+
+		System.out.println("Navn på Filmselskap :");
+		String filmselskap = scanner.nextLine();
+
+		return new Film();
+		//return new Film(nr, produsent, film, aar, sjanger, filmselskap);
+		
 	}
 
 	// Skriver ut en film med alle opplysninger på skjerm (husk tekst for sjanger)
@@ -52,17 +58,28 @@ public class Tekstgrensesnitt extends Film {
 	
 	// Skriver ut alle filmer med en spesiell delstreng i tittelen
 	public void skrivUtFilmDelstrengITittel(FilmarkivADT arkiv, String delstreng) {
-		//TODO
+
+		Film[] filmer = arkiv.soekTittel(delstreng);
+        for (Film film : filmer) {
+            System.out.println(film);
 	}
+}
 	// Skriver ut alle Filmer av en produsent (produsent er delstreng)
 	public void skrivUtFilmProdusent(FilmarkivADT arkiv, String delstreng) {
-	// TODO
-	}
+		  Film[] filmer = arkiv.soekProdusent(getProdusent());
+	        for (Film film : filmer) {
+	            System.out.println(film);
+	        }
+	    }
+	
 	// Skriver ut en enkel statistikk som inneholder antall filmer totalt
 	// og hvor mange det er i hver sjanger.
 	public void skrivUtStatistikk(FilmarkivADT arkiv) {
-	// TODO
+		  System.out.println("Totalt antall filmer: " + arkiv.antall());
+	        for (Sjanger sjanger : Sjanger.values()) {
+	            System.out.println(sjanger + ": " + arkiv.antall(sjanger));
+	        }
+	    }
 	}
 	// osv ... andre metoder
-	}
 

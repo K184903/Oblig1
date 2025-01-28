@@ -9,21 +9,12 @@ public class Film {
 	private int Aar;
 	private Sjanger sjanger;
 	private String filmselskap;
-	
-	 public enum Sjanger {
-	        ACTION, DRAMA, KOMEDIE, SKREKK, SCI_FI, ANIMASJON, DOKUMENTAR
-	    }
-	 
-	 
-	 //tom konstruktør
-	 public Film() {
-	        this.filmnr = 0;
-	        this.produsent = "";
-	        this.film = "";
-	        this.Aar = 0;
-	        this.sjanger = null; 
-	        this.filmselskap = "";
-	    }
+
+
+	// tom konstruktør
+	public Film() {
+		
+	}
 
 	public Film(int filmnr, String produsent, String film, int aar, Sjanger sjanger, String filmselskap) {
 		super();
@@ -66,14 +57,11 @@ public class Film {
 	public void setAar(int aar) {
 		Aar = aar;
 	}
+
 	public Sjanger getSjanger() {
-        return sjanger;
-    }
-
-    public void setSjanger(Sjanger sjanger) {
-        this.sjanger = sjanger;
-    }
-
+		return sjanger;
+	}
+	
 	public String getFilmselskap() {
 		return filmselskap;
 	}
@@ -100,7 +88,5 @@ public class Film {
 				&& Objects.equals(filmselskap, other.filmselskap) && Objects.equals(produsent, other.produsent)
 				&& sjanger == other.sjanger;
 	}
-
-	
 
 }

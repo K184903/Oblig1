@@ -1,5 +1,7 @@
 package no.hvl.data102.filmarkiv.impl;
 
+import no.hvl.data102.filmarkiv.impl.Sjanger;
+
 import java.util.ArrayList;
 
 import no.hvl.data102.filmarkiv.adt.FilmarkivADT;
@@ -76,12 +78,17 @@ public class Filmarkiv implements FilmarkivADT {
 	public int antall(Sjanger sjanger) {
 		 int antall = 0;
 		 for (int i = 0; i < nesteLedig; i++) {
-			 if (filmer[i].getSjanger().toString().equals(sjanger.toString())) {
-				 antall += 1;
+			 if(filmer[i].getSjanger() == sjanger) {
+				 antall++;
+				 
 			 }
-		 }
+		// if (filmer[i].getSjanger().toString().equals(sjanger.toString())) {
+	     // antall += 1;
+			 }
+		 
 		 return antall;
 	}
+
 
 	@Override
 	public int antall() {
