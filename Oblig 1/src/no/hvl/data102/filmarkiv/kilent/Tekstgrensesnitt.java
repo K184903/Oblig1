@@ -48,7 +48,26 @@ public class Tekstgrensesnitt extends Film {
 		System.out.println("År: " + getAar());
 		System.out.println("Sjanger: " + getSjanger().toString());
 		System.out.println("Filmselskap: " + getFilmselskap());
+<<<<<<< HEAD
 
+=======
+	}
+	
+	// Skriver ut alle filmer med en spesiell delstreng i tittelen
+	public void skrivUtFilmDelstrengITittel(FilmarkivADT arkiv, String delstreng) {
+		//TODO
+	}
+	// Skriver ut alle Filmer av en produsent (produsent er delstreng)
+	public void skrivUtFilmProdusent(FilmarkivADT arkiv, String delstreng) {
+	// TODO
+	}
+	// Skriver ut en enkel statistikk som inneholder antall filmer totalt
+	// og hvor mange det er i hver sjanger.
+	public void skrivUtStatistikk(FilmarkivADT arkiv) {
+	// TODO
+	}
+	// osv ... andre metoder
+>>>>>>> a38e5339e345cc64aef2f9babf75015a2787ba64
 	}
 
 	
