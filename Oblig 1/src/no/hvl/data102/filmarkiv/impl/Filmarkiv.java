@@ -17,35 +17,34 @@ public class Filmarkiv implements FilmarkivADT {
 
 	@Override
 	public Film finnFilm(int nr) {
-		for (int i = 0; i < filmer.length; i++) {
-			if (filmer[i].getFilmnr() == nr) {
-				return filmer[i];
-			}
-		}
-		return null;
+	    for (int i = 0; i < filmer.length; i++) {
+	        if (filmer[i] != null && filmer[i].getFilmnr() == nr) {
+	            return filmer[i];
+	        }
+	    }
+	    return null;
 	}
 
 	@Override
 	public void leggTilFilm(Film nyFilm) {
-		if (filmer.length > nesteLedig) {
-			filmer[nesteLedig] = nyFilm;
-			nesteLedig++;
-		} else {
-			System.out.println("Tabellen er full");
-		}
+	    if (nesteLedig == filmer.length) {
+	        utvid();
+	    }
+	    filmer[nesteLedig] = nyFilm;
+	    nesteLedig++; 
 	}
 
 	@Override
 	public boolean slettFilm(int filmnr) {
-		for (int i = 0; i < filmer.length; i++) {
-			if (filmer[i].getFilmnr() == filmnr) {
-				filmer[i] = filmer[nesteLedig-1];
-				filmer[nesteLedig - 1] = new Film();
-				nesteLedig--;
-				return true;
-			}
-		}
-		return false;
+	    for (int i = 0; i < nesteLedig; i++) {
+	        if (filmer[i] != null && filmer[i].getFilmnr() == filmnr) {
+	            filmer[i] = filmer[nesteLedig - 1];
+	            filmer[nesteLedig - 1] = null;
+	            nesteLedig--;
+	            return true;
+	        }
+	    }
+	    return false;
 	}
 
 	@Override
@@ -54,7 +53,7 @@ public class Filmarkiv implements FilmarkivADT {
 		ArrayList<Film> resultater = new ArrayList<>();
 
 		for (int i = 0; i < nesteLedig; i++) {
-			if (filmer[i].getFilm().toLowerCase().contains(delstreng)) {
+			if (filmer[i].getFilm().toLowerCase().contains(delstreng.toLowerCase())) {
 				resultater.add(filmer[i]);
 			}
 		}
@@ -92,7 +91,16 @@ public class Filmarkiv implements FilmarkivADT {
 
 	@Override
 	public int antall() {
-		return nesteLedig - 1;
+		return nesteLedig;
+	}
+	
+	private void utvid() {
+	    Film[] nyTabell = new Film[filmer.length * 2];
+	    for (int i = 0; i < filmer.length; i++) {
+	        nyTabell[i] = filmer[i];
+	    }
+	    filmer = nyTabell;
 	}
 
 }
+

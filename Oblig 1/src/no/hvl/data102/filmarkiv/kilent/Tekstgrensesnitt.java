@@ -37,8 +37,8 @@ public class Tekstgrensesnitt extends Film {
 		System.out.println("Navn på Filmselskap :");
 		String filmselskap = scanner.nextLine();
 
-		return new Film();
-		//return new Film(nr, produsent, film, aar, sjanger, filmselskap);
+		//return new Film();
+		return new Film(nr, produsent, film, aar, sjanger, filmselskap);
 		
 	}
 
