@@ -14,12 +14,12 @@ public class Filmarkiv2 implements FilmarkivADT {
 
 	@Override
 	public Film finnFilm(int nr) {
-	    LinearNode<Film> filmer = start;  // Corrected the typo: Film, not Flim
+	    LinearNode<Film> filmer = start;  
 	    while (filmer != null) {
 	        if (filmer.getData().getFilmnr() == nr) {
-	            return filmer.getData();  // Use getData(), not data()
+	            return filmer.getData();  
 	        }
-	        filmer = filmer.getNext();  // Use getNext(), not next()
+	        filmer = filmer.getNext(); 
 	    }
 	    return null;
 	}
