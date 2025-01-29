@@ -13,16 +13,17 @@ public class Filmarkiv2 implements FilmarkivADT {
 	}
 
 	@Override
-	public Film finnFilm( int nr) {
-		LinearNode<Film> filmer = start;
-		while(filmer != null) {
-			if(filmer.getData().getFilmnr()== nr) {
-				return filmer.getData();
-			}
-			filmer = filmer.getNext();
-		}
-		return null;
+	public Film finnFilm(int nr) {
+	    LinearNode<Film> filmer = start;  // Corrected the typo: Film, not Flim
+	    while (filmer != null) {
+	        if (filmer.getData().getFilmnr() == nr) {
+	            return filmer.getData();  // Use getData(), not data()
+	        }
+	        filmer = filmer.getNext();  // Use getNext(), not next()
+	    }
+	    return null;
 	}
+
 
 	@Override
 	public void leggTilFilm(Film nyFilm) {
