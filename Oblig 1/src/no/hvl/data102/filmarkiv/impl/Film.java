@@ -88,5 +88,15 @@ public class Film {
 				&& Objects.equals(filmselskap, other.filmselskap) && Objects.equals(produsent, other.produsent)
 				&& sjanger == other.sjanger;
 	}
+	
+	@Override
+	public String toString() {
+	    return "Filmnummer: " + this.getFilmnr() +
+	           ", Tittel: " + this.getFilm() +
+	           ", Produsent: " + this.getProdusent() +
+	           ", År: " + this.getAar() +
+	           ", Sjanger: " + (this.getSjanger() != null ? this.getSjanger().toString() : "Ikke satt") +
+	           ", Filmselskap: " + this.getFilmselskap();
+	}
 
 }
