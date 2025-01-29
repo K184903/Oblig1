@@ -11,30 +11,31 @@ import no.hvl.data102.filmarkiv.impl.Sjanger;
 public class Tekstgrensesnitt extends Film {
 
 	private Scanner scanner = new Scanner(System.in);
+		
 
 	public Film lesFilm() {
+		
+		System.out.println("Skriv inn filmtittel: ");
+		String film = scanner.nextLine();
 
-		System.out.println("Filmnummer");
+		System.out.println("Skriv inn filmnummer: ");
 		int nr = scanner.nextInt();
 		scanner.nextLine();
 		
-		System.out.println("Navn på produsent: ");
+		System.out.println("Skriv inn navn på produsent: ");
 		String produsent = scanner.nextLine();
 
-		System.out.println("Filmtittel: ");
-		String film = scanner.nextLine();
 
-
-		System.out.println("År for lansering :");
+		System.out.println("Skriv inn år for lansering :");
 		int aar = scanner.nextInt();
 		scanner.nextLine();
 
-		System.out.println("Sjanger :");
+		System.out.println("Skriv inn sjanger :");
 		String navn = scanner.nextLine();
 		Sjanger sjanger = Sjanger.finnSjanger(navn.toUpperCase());
 		
 
-		System.out.println("Navn på Filmselskap :");
+		System.out.println("Skriv inn navn på Filmselskap :");
 		String filmselskap = scanner.nextLine();
 
 		//return new Film();
@@ -66,11 +67,15 @@ public class Tekstgrensesnitt extends Film {
 }
 	// Skriver ut alle Filmer av en produsent (produsent er delstreng)
 	public void skrivUtFilmProdusent(FilmarkivADT arkiv, String delstreng) {
-		  Film[] filmer = arkiv.soekProdusent(getProdusent());
+	    if (delstreng != null && !delstreng.isEmpty()) {
+	        Film[] filmer = arkiv.soekProdusent(delstreng);
 	        for (Film film : filmer) {
 	            System.out.println(film);
 	        }
+	    } else {
+	        System.out.println("Produsent er null eller tom.");
 	    }
+	}
 	
 	// Skriver ut en enkel statistikk som inneholder antall filmer totalt
 	// og hvor mange det er i hver sjanger.

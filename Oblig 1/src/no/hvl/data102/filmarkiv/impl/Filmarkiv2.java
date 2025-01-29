@@ -38,15 +38,25 @@ public class Filmarkiv2 implements FilmarkivADT {
 
 	@Override
 	public boolean slettFilm(int filmnr) {
-		for (int i = 0; i < filmer.length; i++) {
-			if (filmer[i].getFilmnr() == filmnr) {
-				filmer[i] = filmer[antall-1];
-				filmer[antall - 1] = new Film();
+		if(start == null) {
+			return false;
+		} 
+		if( start.getData().getFilmnr() == filmnr) {
+			start = start.getNext();
+			antall--;
+			return true;	
+		}
+		LinearNode<Film> filmer = start; 
+		while(filmer.getNext()!= null) {
+			if(filmer.getNext().getData().getFilmnr() == filmnr) {
+				filmer.setNext(filmer.getNext().getNext());
 				antall--;
 				return true;
 			}
-		}
-		return false;
+			filmer = filmer.getNext();
+				
+			}
+			return false;
 	}
 
 	@Override
@@ -92,7 +102,7 @@ public class Filmarkiv2 implements FilmarkivADT {
 
 	@Override
 	public int antall() {
-		return antall - 1;
+		return antall;
 	}
 
 }
