@@ -1,41 +1,51 @@
 package no.hvl.data102.filmarkiv.impl;
 
-public class Filmarkiv2 implements FilmarkivADT {
-	private Film[] filmer;
-	private int nesteLedig;
+import no.hvl.data102.filmarkiv.adt.FilmarkivADT;
+import no.hvl.data102.filmarkiv.impl.LinearNode;
 
-	public Filmarkiv(int antall) {
-		this.filmer = new Film[antall];
-		this.nesteLedig = 0;
+public class Filmarkiv2 implements FilmarkivADT {
+	private int antall;
+	private LinearNode<Film> start;
+
+	public Filmarkiv2() {
+		this.start = null;
+		this.antall = 0;
 	}
 
 	@Override
-	public Film finnFilm(int nr) {
-		for (int i = 0; i < filmer.length; i++) {
-			if (filmer[i].getFilmnr() == nr) {
-				return filmer[i];
+	public Film finnFilm( int nr) {
+		LinearNode<Film> filmer = start;
+		while(filmer != null) {
+			if(filmer.getData().getFilmnr()== nr) {
+				return filmer.getData();
 			}
+			filmer = filmer.getNext();
 		}
 		return null;
 	}
 
 	@Override
 	public void leggTilFilm(Film nyFilm) {
-		if (filmer.length > nesteLedig) {
-			filmer[nesteLedig] = nyFilm;
-			nesteLedig++;
-		} else {
-			System.out.println("Tabellen er full");
-		}
+		LinearNode  nyNode = new Node(filmer);
+		nyNode.next = null;
+		
+		if(Start == null) {
+			
+			
+			
+		LinearNode<Film> nyNode = new LinearNode <>(nyFilm);
+		
+	antall++;
 	}
+}
 
 	@Override
 	public boolean slettFilm(int filmnr) {
 		for (int i = 0; i < filmer.length; i++) {
 			if (filmer[i].getFilmnr() == filmnr) {
-				filmer[i] = filmer[nesteLedig-1];
-				filmer[nesteLedig - 1] = new Film();
-				nesteLedig--;
+				filmer[i] = filmer[antall-1];
+				filmer[antall - 1] = new Film();
+				antall--;
 				return true;
 			}
 		}
@@ -47,7 +57,7 @@ public class Filmarkiv2 implements FilmarkivADT {
 
 		ArrayList<Film> resultater = new ArrayList<>();
 
-		for (int i = 0; i < nesteLedig; i++) {
+		for (int i = 0; i < antall; i++) {
 			if (filmer[i].getFilm().toLowerCase().contains(delstreng)) {
 				resultater.add(filmer[i]);
 			}
@@ -59,7 +69,7 @@ public class Filmarkiv2 implements FilmarkivADT {
 	public Film[] soekProdusent(String delstreng) {
 		
 		ArrayList<Film> resultater = new ArrayList<>();
-		for (int i = 0; i < nesteLedig; i++) {
+		for (int i = 0; i < antall; i++) {
 			if (filmer[i].getProdusent().toLowerCase().contains(delstreng.toLowerCase())) {
 				resultater.add(filmer[i]);
 			}
@@ -71,7 +81,7 @@ public class Filmarkiv2 implements FilmarkivADT {
 	@Override
 	public int antall(Sjanger sjanger) {
 		 int antall = 0;
-		 for (int i = 0; i < nesteLedig; i++) {
+		 for (int i = 0; i < antall; i++) {
 			 if (filmer[i].getSjanger().toString().equals(sjanger.toString())) {
 				 antall += 1;
 			 }
@@ -81,7 +91,7 @@ public class Filmarkiv2 implements FilmarkivADT {
 
 	@Override
 	public int antall() {
-		return nesteLedig - 1;
+		return antall - 1;
 	}
 
 }
