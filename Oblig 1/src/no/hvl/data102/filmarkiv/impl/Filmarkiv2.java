@@ -1,5 +1,7 @@
 package no.hvl.data102.filmarkiv.impl;
 
+import java.util.ArrayList;
+
 import no.hvl.data102.filmarkiv.adt.FilmarkivADT;
 import no.hvl.data102.filmarkiv.impl.LinearNode;
 
@@ -80,10 +82,13 @@ public class Filmarkiv2 implements FilmarkivADT {
 	public Film[] soekProdusent(String delstreng) {
 		
 		ArrayList<Film> resultater = new ArrayList<>();
-		for (int i = 0; i < antall; i++) {
-			if (filmer[i].getProdusent().toLowerCase().contains(delstreng.toLowerCase())) {
-				resultater.add(filmer[i]);
-			}
+        LinearNode<Film> filmer = start;
+
+        while (filmer != null) {
+            if (filmer.getData().getProdusent().toLowerCase().contains(delstreng.toLowerCase())) {
+                resultater.add(filmer.getData());
+            }
+            filmer = filmer.getNext();
 		}
 
 		return resultater.toArray(new Film[0]);
