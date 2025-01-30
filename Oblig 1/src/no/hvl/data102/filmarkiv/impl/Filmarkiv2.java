@@ -3,7 +3,6 @@ package no.hvl.data102.filmarkiv.impl;
 import java.util.ArrayList;
 
 import no.hvl.data102.filmarkiv.adt.FilmarkivADT;
-import no.hvl.data102.filmarkiv.impl.LinearNode;
 
 public class Filmarkiv2 implements FilmarkivADT {
 	private int antall;
